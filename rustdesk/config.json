@@ -1,0 +1,50 @@
+{
+  "name": "RustDesk Server",
+  "version": "1.0.0",
+  "slug": "rustdesk",
+  "description": "Run a RustDesk server for remote desktop connections",
+  "url": "https://github.com/rustdesk/rustdesk-server",
+  "startup": "application",
+  "arch": ["aarch64", "amd64", "armv7", "i386"],
+  "init": false,
+  "boot": "auto",
+  "hassio_api": true,
+  "homeassistant_api": false,
+  "privileged": ["NET_ADMIN", "SYS_ADMIN"],
+  "host_network": true,
+  "ports": {
+    "21115/tcp": 21115,
+    "21116/tcp": 21116,
+    "21116/udp": 21116,
+    "21117/tcp": 21117,
+    "21118/tcp": 21118,
+    "21119/tcp": 21119
+  },
+  "ports_description": {
+    "21115/tcp": "Hbbs NAT type test port",
+    "21116/tcp": "Hbbs TCP port",
+    "21116/udp": "Hbbs UDP port",
+    "21117/tcp": "Hbbr relay port",
+    "21118/tcp": "Web console port",
+    "21119/tcp": "Web console HTTPS port"
+  },
+  "options": {
+    "relay_server": "",
+    "encrypted_only": false,
+    "public_key": "",
+    "web_console_enabled": true,
+    "web_console_user": "admin",
+    "web_console_password": "rustdesk",
+    "log_level": "info"
+  },
+  "schema": {
+    "relay_server": "str?",
+    "encrypted_only": "bool",
+    "public_key": "str?",
+    "web_console_enabled": "bool",
+    "web_console_user": "str",
+    "web_console_password": "password",
+    "log_level": "list(debug|info|warn|error)"
+  },
+  "image": "ghcr.io/{arch}-addon-rustdesk"
+}

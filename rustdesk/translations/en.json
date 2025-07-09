@@ -1,0 +1,32 @@
+{
+  "configuration": {
+    "relay_server": {
+      "name": "Relay Server",
+      "description": "Custom relay server address (leave empty to use built-in)"
+    },
+    "encrypted_only": {
+      "name": "Encrypted Only",
+      "description": "Only allow encrypted connections"
+    },
+    "public_key": {
+      "name": "Public Key",
+      "description": "Custom server public key (leave empty to auto-generate)"
+    },
+    "web_console_enabled": {
+      "name": "Enable Web Console",
+      "description": "Enable the web-based management console"
+    },
+    "web_console_user": {
+      "name": "Web Console Username",
+      "description": "Username for web console access"
+    },
+    "web_console_password": {
+      "name": "Web Console Password",
+      "description": "Password for web console access"
+    },
+    "log_level": {
+      "name": "Log Level",
+      "description": "Set the logging verbosity level"
+    }
+  }
+}
