@@ -6,7 +6,7 @@ build_from:
 labels:
   org.opencontainers.image.title: 'RustDesk Server'
   org.opencontainers.image.description: 'Run a RustDesk server for remote desktop connections'
-  org.opencontainers.image.source: 'https://github.com/yourusername/rustdesk-addon'
+  org.opencontainers.image.source: 'https://github.com/Benicol/rustdesk-addon'
   org.opencontainers.image.vendor: 'Home Assistant Community Add-ons'
   org.opencontainers.image.authors: 'Home Assistant Community'
   org.opencontainers.image.licenses: 'MIT'

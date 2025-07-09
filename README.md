@@ -27,7 +27,7 @@ RustDesk is an open-source remote desktop application that allows you to control
 1. In Home Assistant, go to **Supervisor** → **Add-on Store**
 2. Click the **⋮** menu in the top right corner
 3. Select **Repositories**
-4. Add this repository URL: `https://github.com/yourusername/rustdesk-addon`
+4. Add this repository URL: `https://github.com/Benicol/rustdesk-addon`
 5. Find "RustDesk Server" in the add-on store and install it
 
 ### Method 2: Manual Installation
@@ -35,7 +35,7 @@ RustDesk is an open-source remote desktop application that allows you to control
 1. Clone this repository to your Home Assistant addons directory:
    ```bash
    cd /usr/share/hassio/addons/local/
-   git clone https://github.com/yourusername/rustdesk-addon.git
+   git clone https://github.com/Benicol/rustdesk-addon.git
    ```
 2. Restart Home Assistant
 3. Install the add-on from the Local Add-ons section
@@ -204,7 +204,7 @@ Check the add-on logs for:
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/rustdesk-addon/issues)
+- **Issues**: [GitHub Issues](https://github.com/Benicol/rustdesk-addon/issues)
 - **RustDesk Documentation**: [Official Docs](https://rustdesk.com/docs/)
 - **Home Assistant Community**: [Community Forum](https://community.home-assistant.io/)
 
@@ -225,4 +225,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[license-shield]: https://img.shields.io/github/license/yourusername/rustdesk-addon.svg
+[license-shield]: https://img.shields.io/github/license/Benicol/rustdesk-addon.svg

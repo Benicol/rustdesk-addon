@@ -46,5 +46,5 @@
     "web_console_password": "password",
     "log_level": "list(debug|info|warn|error)"
   },
-  "image": "ghcr.io/{arch}-addon-rustdesk"
+  "image": "ghcr.io/benicol/{arch}-addon-rustdesk"
 }
