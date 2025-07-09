@@ -41,6 +41,10 @@ jobs:
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
+      - name: 🔧 Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
       - name: 🏗 Set up build cache
         id: cache
         uses: actions/cache@v4
@@ -57,7 +61,26 @@ jobs:
         id: flags
         run: |
           echo "date=$(date +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_OUTPUT
-          from=$(jq --raw-output ".build_from.${{ matrix.architecture }}" "${{ needs.information.outputs.build }}")
+          echo "Build information path: ${{ needs.information.outputs.build }}"
+          echo "Architecture: ${{ matrix.architecture }}"
+
+          # Debug: show the content of the build file
+          if [[ -f "${{ needs.information.outputs.build }}" ]]; then
+            echo "Build file content:"
+            cat "${{ needs.information.outputs.build }}"
+          else
+            echo "Build file not found, using direct path"
+            cat "./rustdesk/build.yaml"
+          fi
+
+          # Try to get the base image
+          if [[ -f "${{ needs.information.outputs.build }}" ]]; then
+            from=$(yq eval ".build_from.${{ matrix.architecture }}" "${{ needs.information.outputs.build }}")
+          else
+            from=$(yq eval ".build_from.${{ matrix.architecture }}" "./rustdesk/build.yaml")
+          fi
+
+          echo "Base image: ${from}"
           echo "from=${from}" >> $GITHUB_OUTPUT
 
           if [[ "${{ matrix.architecture}}" = "amd64" ]]; then
