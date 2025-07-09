@@ -38,7 +38,6 @@ RUN \
         aarch64) ARCH="aarch64" ;; \
         armv7) ARCH="armv7" ;; \
         armhf) ARCH="armv7" ;; \
-        i386) ARCH="i686" ;; \
         *) echo "Unsupported architecture: ${BUILD_ARCH}" && exit 1 ;; \
     esac \
     && RUSTDESK_VERSION="1.1.10-3" \
