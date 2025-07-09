@@ -83,6 +83,10 @@ jobs:
           echo "Base image: ${from}"
           echo "from=${from}" >> $GITHUB_OUTPUT
 
+          # Convert repository owner to lowercase for Docker registry
+          REPO_OWNER_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "repo_owner_lower=${REPO_OWNER_LOWER}" >> $GITHUB_OUTPUT
+
           if [[ "${{ matrix.architecture}}" = "amd64" ]]; then
             echo "platform=linux/amd64" >> $GITHUB_OUTPUT
           elif [[ "${{ matrix.architecture }}" = "armhf" ]]; then
@@ -119,14 +123,14 @@ jobs:
           platforms: ${{ steps.flags.outputs.platform }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.architecture }}-addon-rustdesk:${{ needs.information.outputs.version }}
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.architecture }}-addon-rustdesk:latest
+            ghcr.io/${{ steps.flags.outputs.repo_owner_lower }}/${{ matrix.architecture }}-addon-rustdesk:${{ needs.information.outputs.version }}
+            ghcr.io/${{ steps.flags.outputs.repo_owner_lower }}/${{ matrix.architecture }}-addon-rustdesk:latest
           cache-from: |
             type=local,src=/tmp/.docker-cache
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.architecture }}-addon-rustdesk:buildcache
+            ghcr.io/${{ steps.flags.outputs.repo_owner_lower }}/${{ matrix.architecture }}-addon-rustdesk:buildcache
           cache-to: |
             type=local,dest=/tmp/.docker-cache-new,mode=max
-            ghcr.io/${{ github.repository_owner }}/${{ matrix.architecture }}-addon-rustdesk:buildcache
+            ghcr.io/${{ steps.flags.outputs.repo_owner_lower }}/${{ matrix.architecture }}-addon-rustdesk:buildcache
       - name: 🚚 Swap build cache
         run: |
           rm -rf /tmp/.docker-cache
